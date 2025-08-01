@@ -1,0 +1,65 @@
+[EN]
+
+Assignment name : life
+Expected files : *.c *.h
+Allowed functions: atoi, read, putchar, malloc, calloc, realloc, free
+--------------------------------------------------------------------------------
+You must write a program that will simulate a game of life.
+The prototype of this program is the following:
+./life width height iterations
+Width and height are the dimensions of the board and iterations is the number of
+iterations of the game of life.
+the initial configuration of the board will be drawn by a sequence of commands
+in the standard input.
+Imagine a pen starting in the top left corner of the board.
+Each command is one of these characters:
+
+w a s d -> move the pen up, left, bottom, and right.
+x -> lift or lower the pen in order to start or stop drawing.
+
+Once end of file is reached, your program must simulate a game of life on this
+board and print the result in stdout (each cell alive will be represented by
+the character 'O' and each dead cell will be represented by a space)
+each cell outside of the array will be considered dead
+Example:
+$> echo 'sdxddssaaww' | ./a.out 5 5 0 | cat -e
+$
+OOO $
+O O $
+OOO $
+$
+$> echo 'sdxssdswdxddddsxaadwxwdxwaa' | ./a.out 10 6 0 | cat -e
+$
+O OOO $
+O O $
+OOO O $
+O OOO $
+$
+$> echo 'dxss' | ./a.out 3 3 0 | cat -e
+O $
+O $
+O $
+$> echo 'dxss' | ./a.out 3 3 1 | cat -e
+$
+OOO$
+$
+$> echo 'dxss' | ./a.out 3 3 2 | cat -e
+O $
+O $
+O $
+
+[TR]
+
+width ve height tahtanın boyutlarıdır ve iterations yaşam oyununun yineleme sayısıdır.
+
+Tahtanın ilk yapılandırması, standart girdideki bir dizi komutla çizilecektir.
+
+Tahtanın sol üst köşesinden başlayan bir kalem düşünün. Her komut şu karakterlerden biridir:
+w a s d -> kalemi yukarı, sola, aşağı ve sağa hareket ettir.
+x -> çizimi başlatmak veya durdurmak için kalemi kaldır veya indir.
+
+Dosya sonuna ulaşıldığında, programınız bu tahtada bir yaşam oyunu simülasyonu yapmalı ve 
+sonucu standart çıktıda 
+(canlı her hücre 'O' karakteriyle, ölü her hücre ise bir boşlukla temsil edilecektir) yazdırmalıdır. 
+
+Dizinin dışındaki her hücre ölü kabul edilecektir.

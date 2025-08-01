@@ -1,0 +1,67 @@
+[EN]
+Assignment name : bigint
+Expected files : bigint.hpp, bigint.cpp
+--------------------------------------------------------------------------------
+In computer science a bignum is an object representing an arbitrary precision
+number, this is useful when you want to store a number bigger than SIZE_MAX
+without any loss of precision. This is often achieved by storing an array or a
+string containing the different "parts" of the number.
+Create a class called bigint that will store an arbitrary precision unsigned
+integer.
+Your class must support addition, comparison and "digitshift" (like bitshift but
+instead of shifting the bits you will shift the digits in base 10, e.g.:
+(42 << 3 == 42000) and (1337 >> 2 == 13)).
+Your bigint must be printable with the << operator (in base 10) and the output
+should not contain any leading zeros.
+You will find a main in this directory that must work with your class
+
+[TR]
+Bilgisayar bilimlerinde bignum, keyfi bir hassasiyetteki sayıyı temsil eden bir nesnedir.
+Bu, herhangi bir hassasiyet kaybı olmadan SIZE_MAX değerinden büyük bir sayıyı depolamak istediğinizde kullanışlıdır.
+Bu genellikle sayının farklı "kısımlarını" içeren bir dizi veya dize depolayarak elde edilir.
+
+keyfi bir hassasiyetteki işaretsiz tamsayıyı depolayacak bigint adlı bir sınıf oluşturun.
+Sınıfınız toplama, karşılaştırma ve "rakam kaydırma" işlemlerini desteklemelidir
+(bit kaydırma gibi, ancak bitleri kaydırmak yerine 10 tabanındaki rakamları kaydırırsınız
+örneğin: (42 << 3 == 42000) ve (1337 >> 2 == 13)).
+
+bigint değeriniz << operatörüyle (10 tabanında) yazdırılabilir olmalı ve çıktıda başta sıfır bulunmamalıdır.
+
+Bu dizinde, sınıfınızla uyumlu olması gereken bir main bulacaksınız.
+
+[SUBJECT MAIN]
+#include "bigint.hpp"
+#include <iostream>
+
+int main()
+{
+    const bigint a(42);
+    bigint b(21), c, d(1337), e(d);
+
+    std::cout << "a = " << a << std::endl;
+    std::cout << "b = " << b << std::endl;
+    std::cout << "c = " << c << std::endl;
+    std::cout << "d = " << d << std::endl;
+    std::cout << "e = " << e << std::endl;
+
+    std::cout << "a + b = " << a + b << std::endl;
+    std::cout << "(c += a) = " << (c += a) << std::endl;
+
+    std::cout << "b = " << b << std::endl;
+    std::cout << "++b = " << ++b << std::endl;
+    std::cout << "b++ = " << b++ << std::endl;
+
+    std::cout << "(b << 10) + 42 = " << ((b << 10) + 42) << std::endl;
+    std::cout << "(d <<= 4) = " << (d <<= 4) << std::endl;
+    std::cout << "(d >>= 2) = " << (d >>= (const bigint)2) << std::endl;
+
+    std::cout << "a =" << a << std::endl;
+    std::cout << "d =" << d << std::endl;
+
+    std::cout << "(d < a) = " << (d < a) << std::endl;
+    std::cout << "(d <= a) = " << (d <= a) << std::endl;
+    std::cout << "(d > a) = " << (d > a) << std::endl;
+    std::cout << "(d >= a) = " << (d >= a) << std::endl;
+    std::cout << "(d == a) = " << (d == a) << std::endl;
+    std::cout << "(d != a) = " << (d != a) << std::endl;
+}

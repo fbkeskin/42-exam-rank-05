@@ -1,0 +1,50 @@
+[EN]
+Assigment name: Polyset
+Expected File: searchable_array_bag.cpp, searchable_array_bag.hpp,
+searchable_tree_bg.cpp, searchable_tree_bag.hpp, set.cpp, set.hpp
+
+You will find in this directory some classes:
+- bag: an abstract class representing a bag
+- searchable_bag: an abstract class representing a bag with the ability to search in it.
+- array_bag: an implementation of a bag with an array an underlying data structure.
+- tree_bag: an implementation of a bag with a binary search tree as underlying data structure.
+
+If you don't know what is a set or a bag (shame!) you can read the attached
+file shame.en.txt
+
+First Part:
+Since a bag without a searching function isn't very useful, implement two
+classes searchable_array_bag and searchable_tree_bag, that will inherit from
+array_bag and tree_bag and implement the searchable bag abstract class.
+
+Second Part:
+Implement the class set that will wrap a searchable_bag and turn it into a set.
+You will find in this dir a main that must compile with your code.
+All classes should be under orthodox canonical form. Don't forget the const.
+
+[TR]
+Görev adı: Polyset
+Beklenen Dosya: searchable_array_bag.cpp, searchable_array_bag.hpp,
+searchable_tree_bg.cpp, searchable_tree_bag.hpp, set.cpp, set.hpp
+
+Bu dizinde bazı sınıflar bulacaksınız:
+- bag: Bir çantayı temsil eden soyut bir sınıf
+
+- searchable_bag: İçinde arama yapılabilen bir çantayı temsil eden soyut bir sınıf.
+
+- array_bag: Altta yatan bir veri yapısı dizisi olan bir çanta uygulaması.
+
+- tree_bag: Altta yatan veri yapısı olarak ikili arama ağacı olan bir çanta uygulaması.
+
+Küme veya çantanın ne olduğunu bilmiyorsanız (yazık!) ekteki shame.en.txt dosyasını okuyabilirsiniz.
+
+Birinci Bölüm:
+Arama fonksiyonu olmayan bir çanta çok kullanışlı olmadığından, array_bag ve tree_bag'den
+miras alacak ve searchable_array_bag ve searchable_tree_bag adlı iki sınıf uygulayın.
+Bu sınıflar searchable_array_bag ve tree_bag'den türetilecek ve searchable bag soyut sınıfını uygulayacaktır.
+
+İkinci Bölüm:
+searchable_bag'i saracak ve onu bir kümeye dönüştürecek olan set sınıfını uygulayın.
+
+Bu dizinde, kodunuzla derlenmesi gereken bir main bulacaksınız.
+Tüm sınıflar geleneksel kanonik formda olmalıdır. const'u unutmayın.
