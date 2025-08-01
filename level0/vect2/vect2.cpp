@@ -6,7 +6,7 @@
 /*   By: fatkeski <fatkeski@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 20:39:15 by fatkeski          #+#    #+#             */
-/*   Updated: 2025/08/01 13:20:55 by fatkeski         ###   ########.fr       */
+/*   Updated: 2025/08/01 21:14:24 by fatkeski         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,6 @@ int& vect2::operator[](int index)
 	return(this->y);
 }
 
-
-vect2 vect2::operator+(int num) const
-{
-	vect2 temp;
-
-	temp.x = this->x + num;
-	temp.y = this->y + num;
-	return(temp);
-}
-
-vect2 vect2::operator-(int num) const
-{
-	vect2 temp;
-
-	temp.x = this->x - num;
-	temp.y = this->y - num;
-	return(temp);
-}
-
 vect2 vect2::operator-() const
 {
 	vect2 temp = *this;
@@ -89,22 +70,6 @@ vect2 vect2::operator*(int num) const
 	temp.y = this->y * num;
 	return(temp);
 }
-
-
-vect2& vect2::operator+=(int num)
-{
-	this->x += num;
-	this->y += num;
-	return(*this);
-}
-
-vect2& vect2::operator-=(int num)
-{
-	this->x -= num;
-	this->y -= num;
-	return(*this);
-}
-
 
 vect2& vect2::operator*=(int num)
 {
@@ -213,20 +178,6 @@ std::ostream& operator<<(std::ostream& os,const vect2& obj)
 	return(os);
 }
 
-
-vect2 operator+(int num, const vect2& obj)
-{
-	vect2 temp(obj);
-	temp += num;
-	return(temp);
-}
-
-vect2 operator-(int num, const vect2& obj)
-{
-	vect2 temp(obj);
-	temp -= num;
-	return(temp);
-}
 
 vect2 operator*(int num, const vect2& obj)
 {
