@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsq.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbetul <fbetul@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fatkeski <fatkeski@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 13:56:48 by fatkeski          #+#    #+#             */
-/*   Updated: 2025/07/31 23:01:36 by fbetul           ###   ########.fr       */
+/*   Updated: 2025/08/01 18:26:24 by fatkeski         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int loadElements(FILE* file, t_elements* elements)
 {
-
 	int ret = fscanf(file, "%d %c %c %c", &(elements->n_lines), &(elements->empty), &(elements->obstacle), &(elements->full));
-	
+
 	if((ret != 4))
 		return(-1);
-	
+
 	if(elements->n_lines <= 0)
 		return(-1);
 	if(elements->empty == elements->obstacle || elements->empty == elements->full || elements->obstacle == elements->full)
@@ -30,7 +29,7 @@ int loadElements(FILE* file, t_elements* elements)
 		return(-1);
 	if(elements->full < 32 || elements->full > 126)
 		return(-1);
-	
+
 	return(0);
 }
 
@@ -99,23 +98,23 @@ int element_control(char** map, char c1, char c2)
 
 int loadMap(FILE* file, t_map* map, t_elements* elements)
 {
-	size_t size = elements->n_lines;
 	map->height = elements->n_lines;
-	map->grid = (char**)malloc((size + 1) * (sizeof(char *)));
-	map->grid[size] = NULL;
+	map->grid = (char**)malloc((map->height + 1) * (sizeof(char *)));
+	map->grid[map->height] = NULL;
 
 	char* line = NULL;
 	size_t len = 0;
-	
+
 	if(getline(&line, &len, file) == -1) {
 		free_map(map->grid);
 		return(-1);
 	}
-	
-	int i = 0;
-	while(i < elements->n_lines)
+
+	//int i = 0;
+	//while(i < elements->n_lines)
+	for(int i = 0; i < map->height; i++)
 	{
-		ssize_t read = getline(&line, &len, file);
+		int read = getline(&line, &len, file);
 		if(read == -1) {
 			free(line);
 			free_map(map->grid);
@@ -135,7 +134,7 @@ int loadMap(FILE* file, t_map* map, t_elements* elements)
 			free_map(map->grid);
 			return(-1);
 		}
-		
+
 		if(i == 0)
 			map->width = read;
 		else{
@@ -145,8 +144,9 @@ int loadMap(FILE* file, t_map* map, t_elements* elements)
 				return(-1);
 			}
 		}
-		i++;
+		//i++;
 	}
+
 	/*
 	ssize_t extra = getline(&line, &len, file);
 	if(extra != -1) {  // Fazladan satır var!
@@ -156,7 +156,7 @@ int loadMap(FILE* file, t_map* map, t_elements* elements)
 	}
 	// gerek var mı bilmiyorum??
 	*/
-	
+
 	if(element_control(map->grid, elements->empty, elements->obstacle) == -1) {
 		free(line);
 		free_map(map->grid);
@@ -210,6 +210,17 @@ void find_big_square(t_map* map, t_square* square, t_elements* elements)
 			}
 		}
 	}
+	/** matrix print
+	for(int i = 0; i < map->height; i++)
+	{
+		for(int j = 0; j < map->width; j++)
+		{
+			printf("%d", matrix[i][j]);
+		}
+		printf("\n");
+	}
+	*/
+
 }
 
 void print_filled_square(t_map* map, t_square* square, t_elements* elements)
@@ -229,7 +240,6 @@ void print_filled_square(t_map* map, t_square* square, t_elements* elements)
 		fprintf(stdout, "%s\n", map->grid[i]);
 	}
 }
-
 
 int execute_bsq(FILE* file)
 {

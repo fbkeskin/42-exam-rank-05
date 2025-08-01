@@ -6,21 +6,17 @@
 /*   By: fatkeski <fatkeski@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 14:17:26 by fatkeski          #+#    #+#             */
-/*   Updated: 2025/07/26 17:52:26 by fatkeski         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:57:18 by fatkeski         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BIGINT
 #define BIGINT
 
-#define SIZE_MIN 0
-#define SIZE_MAX 4294967295
-
 #include <sstream>
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <deque>
 
 class bigint
 {
@@ -67,8 +63,6 @@ class bigint
 		// ~bigint();
 
 };
-
-//void	printDeque(std::deque<int>::iterator begin, std::deque<int>::iterator end);
 
 std::ostream& operator<<(std::ostream& output, const bigint& obj);
 

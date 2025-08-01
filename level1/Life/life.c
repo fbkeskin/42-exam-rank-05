@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   life.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbetul <fbetul@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fatkeski <fatkeski@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 23:41:40 by fbetul            #+#    #+#             */
-/*   Updated: 2025/08/01 03:40:27 by fbetul           ###   ########.fr       */
+/*   Updated: 2025/08/01 13:48:17 by fatkeski         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int init_game(t_game* game, char* argv[])
 		game->board[i] = (char *)malloc((game->width) * sizeof(char));
 		if(!(game->board[i])) {
 			free_board(game);
-			return(-1);	
+			return(-1);
 		}
 		for(int j = 0; j < game->width; j++)
 		{
@@ -44,7 +44,7 @@ void fill_board(t_game* game)
 {
 	char buffer;
 	int flag = 0;
-	
+
 	while(read(STDIN_FILENO, &buffer, 1) == 1)
 	{
 		switch (buffer)
@@ -56,11 +56,11 @@ void fill_board(t_game* game)
 		case 's':
 			if(game->i < (game->height - 1))
 			game->i++;
-			break;	
+			break;
 		case 'a':
 			if(game->j > 0)
 			game->j--;
-			break;	
+			break;
 		case 'd':
 			if(game->j < (game->width - 1))
 			game->j++;
@@ -72,7 +72,7 @@ void fill_board(t_game* game)
 			flag = 1;
 			break;
 		}
-	
+
 		if(game->draw && (flag == 0))
 		{
 			if((game->i >= 0 )&& (game->i < game->height) && (game->j >= 0) && (game->j < game->width))
@@ -90,7 +90,7 @@ int count_neighbors(t_game* game, int i, int j)
 		{
 			if((di == 0) && (dj == 0))
 				continue;
-			
+
 			int ni = i + di;
 			int nj = j + dj;
 			if((ni >= 0) && (nj >=0) && (ni < game->height) && (nj < game->width)) {
@@ -172,12 +172,12 @@ int main(int argc, char* argv[])
 		return (1);
 
 	t_game game;
-	
+
 	if(init_game(&game, argv) == -1)
 		return(1);
 
 	fill_board(&game);
-	
+
 	for(int i = 0; i < game.iterations; i++) {
 		if(play(&game) == -1) {
 			free_board(&game);
@@ -186,7 +186,6 @@ int main(int argc, char* argv[])
 	}
 	print_board(&game);
 	free_board(&game);
-	
+
 	return (0);
 }
-    

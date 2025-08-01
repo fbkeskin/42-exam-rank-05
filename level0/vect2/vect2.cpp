@@ -6,7 +6,7 @@
 /*   By: fatkeski <fatkeski@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 20:39:15 by fatkeski          #+#    #+#             */
-/*   Updated: 2025/07/29 15:21:21 by fatkeski         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:20:55 by fatkeski         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,19 @@ int& vect2::operator[](int index)
 
 vect2 vect2::operator+(int num) const
 {
-	vect2 temp = *this;
+	vect2 temp;
 
 	temp.x = this->x + num;
+	temp.y = this->y + num;
 	return(temp);
 }
 
 vect2 vect2::operator-(int num) const
 {
-	vect2 temp = *this;
+	vect2 temp;
 
 	temp.x = this->x - num;
+	temp.y = this->y - num;
 	return(temp);
 }
 
