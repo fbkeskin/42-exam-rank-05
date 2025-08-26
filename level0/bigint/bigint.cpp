@@ -226,15 +226,7 @@ bool bigint::operator<(const bigint& other) const
 
 	if(len1 != len2)
 		return(len1 < len2);
-
-	for(size_t i = 0; i < len1; i++)
-	{
-		if(str1[i] == str2[i])
-			continue;
-		if(str1[i] < str2[i])
-			return(true);
-	}
-	return(false);
+	return(str1 < str2);  // thanks for your feedback, mjuicha!! o7
 }
 
 bool bigint::operator>(const bigint& other) const
