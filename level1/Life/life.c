@@ -43,10 +43,11 @@ int init_game(t_game* game, char* argv[])
 void fill_board(t_game* game)
 {
 	char buffer;
-	int flag = 0;
+	int flag;
 
 	while(read(STDIN_FILENO, &buffer, 1) == 1)
 	{
+		flag = 0;
 		switch (buffer)
 		{
 		case 'w':
