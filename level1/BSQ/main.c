@@ -19,11 +19,6 @@ int main(int argc, char* argv[])
 		if(execute_bsq(stdin) == -1)
 			fprintf(stderr, "map error\n");
 	}
-	else if(argc == 2)
-	{
-		if(convert_file_pointer(argv[1]) == -1)
-			fprintf(stderr, "map error\n");
-	}
 	else
 	{
 		int i = 1;
@@ -34,9 +29,7 @@ int main(int argc, char* argv[])
 			i++;
 			if(i < argc - 1)
 				fprintf(stdout, "\n");
-
 		}
 	}
 	return(0);
 }
-
