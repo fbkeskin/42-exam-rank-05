@@ -216,7 +216,7 @@ void print_filled_square(t_map* map, t_square* square, t_elements* elements)
 
 	for(int i = 0; i < map->height; i++)
 	{
-		fprintf(stdout, "%s\n", map->grid[i]);
+		fputs(map->grid[i], stdout);
 	}
 }
 
