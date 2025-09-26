@@ -21,15 +21,13 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		int i = 1;
-		while(i < argc)
-		{
-			if(convert_file_pointer(argv[i]) == -1)
-				fprintf(stderr, "map error\n");
-			i++;
-			if(i < argc - 1)
-				fprintf(stdout, "\n");
-		}
+		for(int i = 1; i < argc; i++)
+        {
+            if(convert_file_pointer(argv[i]) == -1)
+                fprintf(stderr, "map error\n");
+            if(i < argc - 1)
+                fprintf(stdout, "\n");
+        }
 	}
 	return(0);
 }
