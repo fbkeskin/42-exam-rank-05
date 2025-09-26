@@ -14,7 +14,7 @@
 
 int loadElements(FILE* file, t_elements* elements)
 {
-	int ret = fscanf(file, "%d %c %c %c", &(elements->n_lines), &(elements->empty), &(elements->obstacle), &(elements->full));
+	int ret = fscanf(file, "%d%c%c%c", &(elements->n_lines), &(elements->empty), &(elements->obstacle), &(elements->full));
 
 	if((ret != 4))
 		return(-1);
@@ -68,17 +68,6 @@ void free_map(char** arr)
 	}
 }
 
-void print(char** arr)
-{
-	int i = 0;
-	while(arr[i])
-	{
-		printf("%s\n", arr[i]);
-		i++;
-	}
-	printf("\n");
-}
-
 int element_control(char** map, char c1, char c2)
 {
 	int i = 0;
@@ -110,19 +99,19 @@ int loadMap(FILE* file, t_map* map, t_elements* elements)
 		return(-1);
 	}
 
-	//int i = 0;
-	//while(i < elements->n_lines)
 	for(int i = 0; i < map->height; i++)
 	{
 		int read = getline(&line, &len, file);
-		if(read == -1) {
+		if(read == -1) 
+		{
 			free(line);
 			free_map(map->grid);
 			return(-1);
 		}
 		if(line[read - 1] == '\n')
 			read--;
-		else{
+		else
+		{
 			free(line);
 			free_map(map->grid);
 			return(-1);
@@ -137,14 +126,15 @@ int loadMap(FILE* file, t_map* map, t_elements* elements)
 
 		if(i == 0)
 			map->width = read;
-		else{
-			if(map->width != read){
+		else
+		{
+			if(map->width != read)
+			{
 				free(line);
 				free_map(map->grid);
 				return(-1);
 			}
 		}
-		//i++;
 	}
 
 	/*
@@ -157,12 +147,12 @@ int loadMap(FILE* file, t_map* map, t_elements* elements)
 	// gerek var mı bilmiyorum??
 	*/
 
-	if(element_control(map->grid, elements->empty, elements->obstacle) == -1) {
+	if(element_control(map->grid, elements->empty, elements->obstacle) == -1) 
+	{
 		free(line);
 		free_map(map->grid);
 		return(-1);
 	}
-
 	free(line);
 
 	return (0);
@@ -210,17 +200,6 @@ void find_big_square(t_map* map, t_square* square, t_elements* elements)
 			}
 		}
 	}
-	/** matrix print
-	for(int i = 0; i < map->height; i++)
-	{
-		for(int j = 0; j < map->width; j++)
-		{
-			printf("%d", matrix[i][j]);
-		}
-		printf("\n");
-	}
-	*/
-
 }
 
 void print_filled_square(t_map* map, t_square* square, t_elements* elements)
@@ -250,8 +229,6 @@ int execute_bsq(FILE* file)
 	t_map map;
 	if(loadMap(file, &map, &elements) == -1)
 		return(-1);
-
-	//print(map.grid);
 
 	t_square square;
 	square.size = 0; square.i = 0; square.j = 0;
